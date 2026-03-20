@@ -45,7 +45,7 @@ It allows users to shorten long URLs, track click counts, and view history.
 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/url-shortener-flask.git
+git clone https://github.com/Jidnyasathakre/url-shortener-flask.git
 cd url-shortener-flask
 ```
 
