@@ -90,4 +90,4 @@ python app.py
 
 ## Author
 
-Your Name
+Jidnyasa Thakre
