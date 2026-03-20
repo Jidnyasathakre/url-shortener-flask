@@ -15,12 +15,14 @@
 
         <tr>
             <th>Original URL</th>
+            <th>Clicks</th>
             <th>Short URL</th>
         </tr>
 
         {% for url in urls %}
         <tr>
             <td>{{ url.original_url }}</td>
+            <td>{{ url.clicks }}</td>
             <td>
                 <a href="/{{ url.short_code }}" target="_blank">
                     {{ request.host_url }}{{ url.short_code }}

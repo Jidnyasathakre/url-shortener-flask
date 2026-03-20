@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import string
 import random
 import validators
+import os
 
 app = Flask(__name__)
 
@@ -15,8 +16,9 @@ db = SQLAlchemy(app)
 # Database Model
 class URL(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    original_url = db.Column(db.String(500), nullable=False)
-    short_code = db.Column(db.String(10), unique=True, nullable=False)
+    original_url = db.Column(db.String(500))
+    short_code = db.Column(db.String(10), unique=True)
+    clicks = db.Column(db.Integer, default=0)  
 
 # Create Database
 with app.app_context():
@@ -56,6 +58,10 @@ def index():
 @app.route('/<short_code>')
 def redirect_url(short_code):
     url = URL.query.filter_by(short_code=short_code).first_or_404()
+    
+    url.clicks += 1
+    db.session.commit()
+
     return redirect(url.original_url)
 
 
@@ -67,4 +73,5 @@ def history():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
