@@ -14,6 +14,7 @@
     <table class="table table-bordered mt-3">
 
         <tr>
+            <th>ID</th>
             <th>Original URL</th>
             <th>Clicks</th>
             <th>Short URL</th>
@@ -21,6 +22,7 @@
 
         {% for url in urls %}
         <tr>
+            <td>{{ url.id }}</td>
             <td>{{ url.original_url }}</td>
             <td>{{ url.clicks }}</td>
             <td>
